@@ -9,7 +9,10 @@ const updateById = async (req, res) => {
         {
           new: true,
         },
-    );
+    ).populate('owner', 'email subscription');
+    if (!updatedContact) {
+      throw new Error(error.message);
+    }
     return res.json({status: 'success', code: 200, data: updatedContact});
   } catch (error) {
     return res.status(404).json({
