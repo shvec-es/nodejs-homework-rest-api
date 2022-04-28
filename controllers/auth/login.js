@@ -8,11 +8,11 @@ const login = async (req, res) => {
   try {
     const user = await User.findOne({email});
     const comparePassword = bcrypt.compareSync(password, user.password);
-    if (!user || !comparePassword) {
+    if (!user || !user.verify || !comparePassword) {
       return res.status(401).json({
         type: 'error',
         status: 401,
-        message: 'Email or password is wrong',
+        message: 'Email or password is wrong or email is not verify',
       });
     }
     const payload = {

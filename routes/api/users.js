@@ -14,5 +14,7 @@ router.patch(
     validation(userUpdateSubscriptionSchema),
     users.updateSubscription,
 );
+router.post('/verify', users.resendVerifyEmail);
+router.get('/verify/:verificationToken', users.verifyEmail);
 
 module.exports = router;
