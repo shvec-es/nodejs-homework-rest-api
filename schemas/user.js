@@ -7,7 +7,7 @@ const userSignupJoiSchema = Joi.object({
       .default('starter')
       .valid('starter', 'pro', 'business'),
   token: Joi.string().default(null),
-  avatarURL: Joi.string().required(),
+  avatarURL: Joi.string(),
 });
 
 const userLoginJoiSchema = Joi.object({
